@@ -1,0 +1,50 @@
+name: Build and deploy
+
+on:
+  # デフォルトブランチをターゲットにしたプッシュ時に実行
+  push:
+    branches: ["main"]
+
+  # Actionsタブから手動でこのワークフローを実行できるようにする
+  workflow_dispatch:
+
+# GITHUB_TOKENの権限を設定し、GitHub Pagesへのデプロイを許可
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時デプロイを1つだけ許可し、進行中の実行と最新のキューにある実行の間にキューされた実行をスキップ
+# ただし、進行中の実行をキャンセルしない。これにより、これらのプロダクションデプロイが完了するのを許可する
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # デプロイ用の単一ジョブ（デプロイのみ）
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # リポジトリ全体をアップロード
+          path: 'build/client'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
