@@ -17,6 +17,7 @@ interface Project {
 
 const ProjectSection: React.FC = () => {
   const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
+  const [isAllExpanded, setIsAllExpanded] = useState(false);
 
   const toggleProject = (index: number) => {
     setExpandedProjects((prev) =>
@@ -24,6 +25,15 @@ const ProjectSection: React.FC = () => {
         ? prev.filter((i) => i !== index)
         : [...prev, index]
     );
+  };
+
+  const toggleAll = () => {
+    if (isAllExpanded) {
+      setExpandedProjects([]);
+    } else {
+      setExpandedProjects([...Array(projects.length).keys()]);
+    }
+    setIsAllExpanded(!isAllExpanded);
   };
 
   const projects: Project[] = [
@@ -196,6 +206,31 @@ const ProjectSection: React.FC = () => {
         <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Project
         </h2>
+
+        {/* トグルボタン */}
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={toggleAll}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#4A6670] dark:hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`transition-transform ${isAllExpanded ? 'rotate-180' : ''}`}
+            >
+              <path d="m7 15 5 5 5-5" />
+              <path d="m7 9 5-5 5 5" />
+            </svg>
+            {isAllExpanded ? '全て閉じる' : '全て開く'}
+          </button>
+        </div>
 
         <div className="space-y-4">
           {projects.map((project, index) => (

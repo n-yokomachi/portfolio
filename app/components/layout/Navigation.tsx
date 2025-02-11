@@ -2,15 +2,45 @@
 
 import Link from 'next/link';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { useEffect, useState } from 'react';
 
 const Navigation = () => {
+  const [activeSection, setActiveSection] = useState<string>('');
+
   const navItems = [
     { label: 'Profile', href: '#profile' },
     { label: 'Skill', href: '#skill' },
-    { label: 'Position / Certification', href: '#position' },
+    { label: 'Position', href: '#position' },
+    { label: 'Certification', href: '#certification' },
     { label: 'Project', href: '#project' },
-    { label: 'Link / Contact', href: '#contact' },
+    { label: 'Link', href: '#contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => item.href.replace('#', ''));
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { top, bottom } = element.getBoundingClientRect();
+          const absoluteTop = window.scrollY + top;
+          const absoluteBottom = window.scrollY + bottom;
+
+          if (scrollPosition >= absoluteTop && scrollPosition <= absoluteBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // 初期表示時にも実行
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -34,7 +64,11 @@ const Navigation = () => {
                 <Link
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+                  className={`text-sm transition-colors ${
+                    activeSection === item.href.replace('#', '')
+                    ? 'text-[#4A6670] dark:text-white font-medium'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                  }`}
                 >
                   {item.label}
                 </Link>

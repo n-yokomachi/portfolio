@@ -66,6 +66,36 @@
   }
 }
 
+@layer utilities {
+  .animate-fade-in {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-delay-200 {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out forwards;
+    animation-delay: 200ms;
+  }
+
+  .animate-fade-in-delay-400 {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out forwards;
+    animation-delay: 400ms;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

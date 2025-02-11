@@ -12,17 +12,31 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-white">
       <main className="flex-grow">
         <Navigation />
-        <HeroSection />
-        <ProfileSection />
-        <SkillSection />
-        <PositionSection />
-        <CertificationSection />
-        <ProjectSection />
-        <LinkSection />
+        <div className="animate-fade-in">
+          <HeroSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <ProfileSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <SkillSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <PositionSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <CertificationSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <ProjectSection />
+        </div>
+        <div className="animate-fade-in-delay-200">
+          <LinkSection />
+        </div>
       </main>
 
       {/* Footer */}
-      <footer className="py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+      <footer className="py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 animate-fade-in-delay-400">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400 font-montserrat">
             Designed & Built by{' '}
