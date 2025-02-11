@@ -16,7 +16,7 @@ interface Project {
 }
 
 const ProjectSection: React.FC = () => {
-  const [expandedProjects, setExpandedProjects] = useState<number[]>([0]);
+  const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
 
   const toggleProject = (index: number) => {
     setExpandedProjects((prev) =>
