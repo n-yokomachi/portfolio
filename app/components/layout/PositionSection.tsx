@@ -91,11 +91,12 @@ const PositionSection = () => {
   return (
     <section id="position" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
+        <h2 className="text-2xl md:text-3xl font-light text-center mb-8 md:mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Position
         </h2>
 
-        <div className="relative">
+        {/* PC表示用のタイムライン */}
+        <div className="relative hidden md:block">
           {/* タイムライン中央線 */}
           <div className="absolute left-1/2 -translate-x-[0.5px] top-0 bottom-0 w-px bg-gradient-to-b from-[#4A6670]/0 via-[#4A6670]/20 to-[#4A6670]/0 dark:from-gray-200/0 dark:via-gray-200/20 dark:to-gray-200/0" />
 
@@ -144,6 +145,42 @@ const PositionSection = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* モバイル表示用のリスト */}
+        <div className="md:hidden space-y-6">
+          {positions.map((position, index) => (
+            <div
+              key={index}
+              className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="px-3 py-1 bg-[#4A6670]/10 dark:bg-gray-200/10 backdrop-blur-sm rounded-full">
+                  <span className="text-xs text-[#4A6670] dark:text-gray-200 font-medium whitespace-nowrap">
+                    {position.period}
+                  </span>
+                </div>
+                <h3 className="text-base font-medium text-[#4A6670] dark:text-gray-200">
+                  {position.title}
+                </h3>
+              </div>
+              
+              <div className="space-y-2">
+                {position.description.map((desc, descIndex) => (
+                  <p
+                    key={descIndex}
+                    className={`${
+                      desc.startsWith('•') 
+                        ? 'pl-3 text-xs text-gray-600 dark:text-gray-300 leading-relaxed' 
+                        : 'text-sm font-medium text-[#4A6670] dark:text-gray-200 mt-2 first:mt-0'
+                    }`}
+                  >
+                    {desc}
+                  </p>
+                ))}
               </div>
             </div>
           ))}

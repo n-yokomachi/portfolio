@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { useEffect, useState } from 'react';
+import { GithubIcon } from 'lucide-react';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState<string>('');
@@ -75,7 +76,17 @@ const Navigation = () => {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <Link
+              href="https://github.com/n-yokomachi/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-[#4A6670] dark:hover:text-white"
+            >
+              <GithubIcon className="w-5 h-5" />
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>
