@@ -8,7 +8,7 @@ const ProfileSection = () => {
     { label: '好きな言語', value: 'TypeScript, C#' },
     { label: '好きなAWS', value: 'Amazon Connect, AWS Lambda, Amazon Bedrock' },
     { label: '好きなエディタ', value: 'Cursor' },
-    { label: '好きなLLM', value: 'Anthropic Claude 3 Haiku' },
+    { label: '好きなLLM', value: 'Anthropic Claude 3.5 Sonnet' },
   ];
 
   return (
