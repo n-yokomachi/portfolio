@@ -201,7 +201,7 @@ const ProjectSection: React.FC = () => {
   ];
 
   return (
-    <section id="project" className="py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="project" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Project

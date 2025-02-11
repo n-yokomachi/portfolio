@@ -9,25 +9,25 @@ import LinkSection from './components/layout/LinkSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <main className="flex-grow">
         <Navigation />
         <div className="animate-fade-in">
           <HeroSection />
         </div>
-        <div className="animate-fade-in-delay-200">
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <ProfileSection />
         </div>
-        <div className="animate-fade-in-delay-200">
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <SkillSection />
         </div>
-        <div className="animate-fade-in-delay-200">
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <PositionSection />
         </div>
-        <div className="animate-fade-in-delay-200">
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <CertificationSection />
         </div>
-        <div className="animate-fade-in-delay-200">
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <ProjectSection />
         </div>
         <div className="animate-fade-in-delay-200">

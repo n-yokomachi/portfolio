@@ -12,7 +12,7 @@ const ProfileSection = () => {
   ];
 
   return (
-    <section id="profile" className="py-24 bg-white dark:bg-gray-900">
+    <section id="profile" className="py-32 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Profile

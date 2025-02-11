@@ -34,6 +34,8 @@ const SkillSection = () => {
         { name: 'Windows', level: 'expert' },
         { name: 'MacOS', level: 'beginner' },
         { name: 'Linux (RHEL)', level: 'intermediate' },
+        { name: 'Linux (CentOS)', level: 'intermediate' },
+        { name: 'Linux (Amazon Linux2, 2023)', level: 'intermediate' },
       ],
     },
     {
@@ -65,15 +67,19 @@ const SkillSection = () => {
         { name: 'API Gateway', level: 'expert' },
         { name: 'AppSync', level: 'intermediate' },
         { name: 'Athena', level: 'beginner' },
-        { name: 'EC2', level: 'intermediate' },
         { name: 'AWS CDK', level: 'expert' },
         { name: 'AWS Lambda', level: 'expert' },
         { name: 'Cognito', level: 'intermediate' },
-        { name: 'S3', level: 'intermediate' },
         { name: 'DynamoDB', level: 'expert' },
+        { name: 'EC2', level: 'intermediate' },
+        { name: 'ECS(Fargate)', level: 'beginner' },
+        { name: 'Firehose', level: 'intermediate' },
         { name: 'Glue', level: 'beginner' },
+        { name: 'Chime SDK', level: 'beginner' },
+        { name: 'Kinesis Streams', level: 'intermediate' },
         { name: 'Lex', level: 'intermediate' },
         { name: 'RDS', level: 'intermediate' },
+        { name: 'S3', level: 'intermediate' },
         { name: 'VPC', level: 'intermediate' },
       ],
     },
@@ -87,7 +93,9 @@ const SkillSection = () => {
         { name: 'Django', level: 'beginner' },
         { name: '.NET Framework', level: 'intermediate' },
         { name: 'Tailwind CSS', level: 'intermediate' },
+        { name: 'shadcn/ui', level: 'intermediate' },
         { name: 'Emotion', level: 'intermediate' },
+        { name: 'Vite', level: 'beginner' },
       ],
     },
   ];
@@ -197,7 +205,7 @@ const SkillSection = () => {
   );
 
   return (
-    <section id="skill" className="py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="skill" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-light text-center mb-12 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Skill
@@ -224,11 +232,11 @@ const SkillSection = () => {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#B8E6E1] dark:bg-[#2F4A47]"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">実務経験あり</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">直近で実務経験あり</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">基本的な知識あり</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">過去に実務経験あり、または基本的な知識あり</span>
           </div>
         </div>
       </div>
