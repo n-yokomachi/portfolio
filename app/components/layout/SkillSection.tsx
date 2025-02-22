@@ -166,19 +166,20 @@ const SkillSection = () => {
   };
 
   const CategoryBox = ({ category }: { category: Category }) => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm break-inside-avoid mb-6">
-      <h3 className="text-xl font-montserrat text-[#4A6670] dark:text-gray-200 mb-4 flex items-center gap-2">
-        {category.title}
-        <div className="h-px flex-grow bg-gray-200 dark:bg-gray-700 ml-4"></div>
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm break-inside-avoid mb-4 hover:shadow-md transition-shadow">
+      <h3 className="text-lg font-montserrat text-[#4A6670] dark:text-gray-200 mb-3 flex items-center gap-2">
+        <span className="whitespace-nowrap">{category.title}</span>
+        <div className="h-px flex-grow bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700"></div>
       </h3>
       {'subCategories' in category ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
           {category.subCategories.map((subCategory, subIndex) => (
             <div key={subIndex}>
-              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">
-                {subCategory.title}
+              <h4 className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-2 flex items-center">
+                <span className="whitespace-nowrap">{subCategory.title}</span>
+                <div className="h-px flex-grow bg-gray-100 dark:bg-gray-700 ml-2"></div>
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {subCategory.skills.map((skill, skillIndex) => (
                   <SkillButton
                     key={skillIndex}
@@ -191,7 +192,7 @@ const SkillSection = () => {
           ))}
         </div>
       ) : (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {category.skills.map((skill, skillIndex) => (
             <SkillButton
               key={skillIndex}
@@ -205,43 +206,36 @@ const SkillSection = () => {
   );
 
   return (
-    <section id="skill" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="skill" className="py-16 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-light text-center mb-12 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
+        <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
           Skill
         </h2>
-
-        {/* メインカテゴリー（2段組） */}
-        <div className="columns-1 md:columns-2 gap-6">
-          {mainCategories.map((category, index) => (
-            <div key={index} className="break-inside-avoid">
-              <CategoryBox category={category} />
+        <div className="flex justify-center mb-8">
+          <div className="flex flex-wrap gap-4 text-xs">
+            <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FFE4E4] to-[#FFD7D7] dark:from-[#4A2F2F] dark:to-[#5A3F3F] ring-2 ring-[#FFD7D7] dark:ring-[#5A3F3F] ring-opacity-30"></div>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">頻繁に使用</span>
             </div>
+            <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#E4F5F3] to-[#B8E6E1] dark:from-[#2F4A47] dark:to-[#3F5A57] ring-2 ring-[#B8E6E1] dark:ring-[#3F5A57] ring-opacity-30"></div>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">実務経験あり</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F8F9FA] to-[#E9ECEF] dark:from-gray-800 dark:to-gray-700 ring-2 ring-gray-300 dark:ring-gray-600 ring-opacity-30"></div>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">基本的な知識</span>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {mainCategories.map((category, index) => (
+            <CategoryBox key={index} category={category} />
           ))}
-        </div>
-
-        {/* DevOpsカテゴリー（1段） */}
-        <div className="mt-6">
           <CategoryBox category={devOpsCategory} />
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-4 justify-end">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#FFD7D7] dark:bg-[#4A2F2F]"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">頻繁に使用している</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#B8E6E1] dark:bg-[#2F4A47]"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">直近で実務経験あり</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-300">過去に実務経験あり、または基本的な知識あり</span>
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default SkillSection; 
+export default SkillSection;
