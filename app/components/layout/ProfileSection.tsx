@@ -7,7 +7,7 @@ const ProfileSection = () => {
     { label: '現在', value: '東京' },
     { label: '好きな言語', value: 'TypeScript, C#' },
     { label: '好きなAWS', value: 'Amazon Connect, AWS Lambda, Amazon Bedrock' },
-    { label: '好きなエディタ', value: 'Cursor' },
+    { label: '使うエディタ', value: 'VSCode, Cursor, Windsurf' },
     { label: '好きなLLM', value: 'Anthropic Claude 3.5 Sonnet' },
   ];
 
