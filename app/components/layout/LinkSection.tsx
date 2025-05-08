@@ -43,6 +43,18 @@ const LinkSection: React.FC = () => {
       icon: <GithubIcon className="w-6 h-6" />,
     },
     {
+      name: 'Zenn',
+      url: 'https://zenn.dev/yokomachi',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          className="w-6 h-6 fill-current"
+        >
+          <path d="M.264 23.771h4.984c.264 0 .498-.147.645-.352L19.614.874c.176-.293-.029-.645-.381-.645h-4.72c-.235 0-.44.117-.557.323L.03 23.361c-.088.176.029.41.234.41zM17.445 23.419l6.479-10.408c.176-.293-.029-.645-.381-.645h-4.688c-.235 0-.44.117-.557.323l-6.655 10.643c-.088.176.029.41.234.41h4.984c.264 0 .498-.147.645-.352z" />
+        </svg>
+      ),
+    },
+    {
       name: 'Qiita',
       url: 'https://qiita.com/yokomachi',
       icon: <FileText className="w-6 h-6" />,

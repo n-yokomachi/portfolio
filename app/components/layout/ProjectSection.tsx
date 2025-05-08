@@ -70,7 +70,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
-      period: '2022/5-現在',
+      period: '2022/5-2025/4',
       name: 'コールセンターブラウザフォンサービス「Sylphina」（Ver.2）',
       role: 'PM/テックリード',
       phases: ['要件定義', '設計', '構築'],
@@ -117,7 +117,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
-      period: '2021/5-現在',
+      period: '2021/5-2025/4',
       name: '某飲料会社コールセンター構築・保守',
       role: 'エンジニア',
       phases: ['設計', '構築', '保守'],
