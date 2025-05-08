@@ -22,7 +22,7 @@ const ProfileSection = () => {
           {/* プロフィール画像 */}
           <div className="w-48 h-48 relative rounded-full overflow-hidden flex-shrink-0 border-4 border-gray-50 dark:border-gray-800 shadow-lg">
             <Image
-              src="/icon2_500px.jpeg"
+              src="/icon3_500.png"
               alt="Profile Icon"
               fill
               className="object-cover"
