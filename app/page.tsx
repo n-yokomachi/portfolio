@@ -2,6 +2,7 @@ import Navigation from './components/layout/Navigation';
 import HeroSection from './components/layout/HeroSection';
 import ProfileSection from './components/layout/ProfileSection';
 import SkillSection from './components/layout/SkillSection';
+import ProductSection from './components/layout/ProductSection';
 import PositionSection from './components/layout/PositionSection';
 import CertificationSection from './components/layout/CertificationSection';
 import ProjectSection from './components/layout/ProjectSection';
@@ -20,6 +21,9 @@ export default function Home() {
         </div>
         <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <SkillSection />
+        </div>
+        <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
+          <ProductSection />
         </div>
         <div className="animate-fade-in-delay-200 border-b border-gray-200 dark:border-gray-800">
           <PositionSection />
