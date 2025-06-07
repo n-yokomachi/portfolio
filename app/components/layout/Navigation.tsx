@@ -58,24 +58,36 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <ul className="flex space-x-6 py-4">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className={`text-sm transition-colors ${
-                    activeSection === item.href.replace('#', '')
-                    ? 'text-[#4A6670] dark:text-white font-medium'
-                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-8">
+            {/* Product Link */}
+            <Link
+              href="/products"
+              className="text-lg font-medium text-[#4A6670] dark:text-white hover:text-gray-900 dark:hover:text-gray-300 transition-colors py-4"
+            >
+              Products
+            </Link>
+            
+            {/* Navigation Items */}
+            <ul className="flex space-x-6">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleScroll(e, item.href)}
+                    className={`text-sm transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                      ? 'text-[#4A6670] dark:text-white font-medium'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
           <div className="flex items-center gap-2">
             <Link
               href="https://github.com/n-yokomachi/portfolio"
