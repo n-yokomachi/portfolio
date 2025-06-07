@@ -21,23 +21,12 @@ jobs:
       id-token: write
       actions: write
     steps:
-      # GitHub Appトークンの生成（推奨）
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-        # GitHub Appを使用しない場合はこのステップをコメントアウト
-        
+      # 標準のGITHUB_TOKENを使用（シンプルで確実）
       - name: Run Claude Code Action
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # GitHub Appを使用する場合
-          github_token: ${{ steps.app-token.outputs.token }}
-          # GitHub Appを使用しない場合は以下を使用
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           
           trigger_phrase: "@claude"
           assignee_trigger: "claude"
