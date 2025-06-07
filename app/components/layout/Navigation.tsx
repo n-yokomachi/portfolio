@@ -9,6 +9,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState<string>('');
 
   const navItems = [
+    { label: 'プロダクト', href: '#project' },
     { label: 'Profile', href: '#profile' },
     { label: 'Skill', href: '#skill' },
     { label: 'Position', href: '#position' },
@@ -70,6 +71,8 @@ const Navigation = () => {
                     ? 'text-[#4A6670] dark:text-white font-medium'
                     : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
                   }`}
+                  aria-label={`${item.label}セクションへ移動`}
+                  role="link"
                 >
                   {item.label}
                 </Link>
