@@ -6,6 +6,8 @@ import PositionSection from './components/layout/PositionSection';
 import CertificationSection from './components/layout/CertificationSection';
 import ProjectSection from './components/layout/ProjectSection';
 import LinkSection from './components/layout/LinkSection';
+import LiveDate from './components/ui/LiveDate';
+import MusicPlayer from './components/ui/MusicPlayer';
 
 export default function Home() {
   return (
@@ -42,10 +44,13 @@ export default function Home() {
             Designed & Built by{' '}
             <span className="text-[#4A6670] dark:text-gray-300">yokomachi</span>
             <span className="mx-2">•</span>
-            Last updated: January 2025
+            Last updated: <LiveDate />
           </p>
         </div>
       </footer>
+      
+      {/* Music Player with Live Time */}
+      <MusicPlayer />
     </div>
   );
 }
