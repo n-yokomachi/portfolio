@@ -8,44 +8,36 @@ on:
     types: [opened, assigned]
   pull_request_review:
     types: [submitted]
-  pull_request:
-    types: [opened, synchronize]
 
 jobs:
   claude-response:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
       pull-requests: write
       id-token: write
-      actions: write
     steps:
-      # 標準のGITHUB_TOKENを使用（シンプルで確実）
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Run Claude Code Action
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           
           trigger_phrase: "@claude"
           assignee_trigger: "claude"
           timeout_minutes: 45
           
-          # 使用可能なツールを明示的に指定
-          allowed_tools: |
-            Bash(git status),
-            Bash(git log),
-            Bash(git diff),
-            Bash(git checkout),
-            Bash(git branch),
-            Bash(git add),
-            Bash(git commit),
-            Bash(git push),
-            View,
-            GlobTool,
-            Edit,
-            Replace
+          # PR作成を可能にするツールを追加
+          allowed_tools: "Bash(git status),Bash(git log),Bash(git diff),Bash(git checkout),Bash(git branch),Bash(git add),Bash(git commit),Bash(git push),View,GlobTool,Edit,Replace,mcp__github__create_pull_request"
           
           # カスタム指示（PR作成を強制）
           custom_instructions: |
