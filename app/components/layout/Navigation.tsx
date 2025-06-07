@@ -45,6 +45,16 @@ const Navigation = () => {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // トップページへのスクロール処理
+    if (href === '#top' || href === '#hero') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+      return;
+    }
+    
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
@@ -58,8 +68,58 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <ul className="flex space-x-6 py-4">
+        <div className="flex justify-between items-center py-4">
+          {/* プロダクトリンク（左側） */}
+          <div className="flex-shrink-0">
+            <Link
+              href="#top"
+              onClick={(e) => handleScroll(e, '#top')}
+              className="text-lg font-medium text-[#4A6670] dark:text-white hover:text-gray-900 dark:hover:text-gray-300 transition-colors font-montserrat tracking-wide"
+              aria-label="ホームページのトップへ戻る"
+            >
+              Yokomachi Naoki
+            </Link>
+          </div>
+
+          {/* ナビゲーション項目（中央） */}
+          <div className="hidden md:flex">
+            <ul className="flex space-x-6">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleScroll(e, item.href)}
+                    className={`text-sm transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                      ? 'text-[#4A6670] dark:text-white font-medium'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* GitHubリンクとテーマトグル（右側） */}
+          <div className="flex items-center gap-2">
+            <Link
+              href="https://github.com/n-yokomachi/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-[#4A6670] dark:hover:text-white"
+              aria-label="GitHubリポジトリを新しいタブで開く"
+            >
+              <GithubIcon className="w-5 h-5" />
+            </Link>
+            <ThemeToggle />
+          </div>
+        </div>
+
+        {/* モバイル用ナビゲーション */}
+        <div className="md:hidden pb-4">
+          <ul className="flex flex-wrap justify-center gap-4">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -76,17 +136,6 @@ const Navigation = () => {
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-2">
-            <Link
-              href="https://github.com/n-yokomachi/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-[#4A6670] dark:hover:text-white"
-            >
-              <GithubIcon className="w-5 h-5" />
-            </Link>
-            <ThemeToggle />
-          </div>
         </div>
       </div>
     </nav>
