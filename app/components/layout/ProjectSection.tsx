@@ -1,13 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ExternalLink, Trash2 } from 'lucide-react';
+import AddLinkDialog from '../ui/AddLinkDialog';
 
 interface TechStack {
   category: string;
   items: string[];
 }
 
+interface ProjectLink {
+  id: string;
+  title: string;
+  url: string;
+}
+
 interface Project {
+  id: string;
   period: string;
   name: string;
   role: string;
@@ -18,26 +27,90 @@ interface Project {
 const ProjectSection: React.FC = () => {
   const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
   const [isAllExpanded, setIsAllExpanded] = useState(false);
+  const [projectLinks, setProjectLinks] = useState<Record<string, ProjectLink[]>>({});
+  const [loadingLinks, setLoadingLinks] = useState<Record<string, boolean>>({});
+
+  // Load links for a specific project
+  const loadProjectLinks = async (projectId: string) => {
+    if (loadingLinks[projectId]) return;
+    
+    setLoadingLinks(prev => ({ ...prev, [projectId]: true }));
+    try {
+      const response = await fetch(`/api/products/${projectId}/links`);
+      const result = await response.json();
+      
+      if (result.success) {
+        setProjectLinks(prev => ({ ...prev, [projectId]: result.data }));
+      }
+    } catch (error) {
+      console.error('Error loading links:', error);
+    } finally {
+      setLoadingLinks(prev => ({ ...prev, [projectId]: false }));
+    }
+  };
+
+  // Handle adding a new link
+  const handleLinkAdded = (projectId: string, newLink: ProjectLink) => {
+    setProjectLinks(prev => ({
+      ...prev,
+      [projectId]: [...(prev[projectId] || []), newLink]
+    }));
+  };
+
+  // Handle deleting a link
+  const handleDeleteLink = async (projectId: string, linkId: string) => {
+    try {
+      const response = await fetch(`/api/products/${projectId}/links?linkId=${linkId}`, {
+        method: 'DELETE',
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setProjectLinks(prev => ({
+          ...prev,
+          [projectId]: (prev[projectId] || []).filter(link => link.id !== linkId)
+        }));
+      }
+    } catch (error) {
+      console.error('Error deleting link:', error);
+    }
+  };
 
   const toggleProject = (index: number) => {
+    const isExpanding = !expandedProjects.includes(index);
+    
     setExpandedProjects((prev) =>
       prev.includes(index)
         ? prev.filter((i) => i !== index)
         : [...prev, index]
     );
+
+    // Load links when expanding
+    if (isExpanding) {
+      const project = projects[index];
+      if (project) {
+        loadProjectLinks(project.id);
+      }
+    }
   };
 
   const toggleAll = () => {
     if (isAllExpanded) {
       setExpandedProjects([]);
     } else {
-      setExpandedProjects([...Array(projects.length).keys()]);
+      const allIndices = [...Array(projects.length).keys()];
+      setExpandedProjects(allIndices);
+      // Load links for all projects when expanding all
+      projects.forEach(project => {
+        loadProjectLinks(project.id);
+      });
     }
     setIsAllExpanded(!isAllExpanded);
   };
 
   const projects: Project[] = [
     {
+      id: 'project-1',
       period: '2024/1-2024/4',
       name: '証券会社コンタクトセンターIVR 更改',
       role: 'PM/テックリード',
@@ -48,6 +121,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-2',
       period: '2022/10-2023/4',
       name: '某飲料会社コールセンターIVR更改',
       role: 'PM/テックリード',
@@ -61,6 +135,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-3',
       period: '2022/10-2023/4',
       name: '某地方銀行コールセンター構築',
       role: 'テックリード',
@@ -70,6 +145,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-4',
       period: '2022/5-2025/4',
       name: 'コールセンターブラウザフォンサービス「Sylphina」（Ver.2）',
       role: 'PM/テックリード',
@@ -98,6 +174,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-5',
       period: '2022/1-2023/10',
       name: '某テレマーケティング基盤インフラ保守',
       role: 'エンジニア',
@@ -108,6 +185,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-6',
       period: '2022/2-2023/10',
       name: '某地方銀行コールセンター構築',
       role: 'テックリード',
@@ -117,6 +195,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-7',
       period: '2021/5-2025/4',
       name: '某飲料会社コールセンター構築・保守',
       role: 'エンジニア',
@@ -130,6 +209,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-8',
       period: '2021/4-2021/9',
       name: '某サロン管理システム向けAmazon Connectチャット導入',
       role: 'PM/テックリード',
@@ -143,6 +223,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-9',
       period: '2021/1-2022/2',
       name: '某MVMO新規サービスAWSバックエンド開発',
       role: 'テックリード',
@@ -153,6 +234,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-10',
       period: '2020/8-2022/4',
       name: 'コールセンターブラウザフォンサービス「Sylphina」（Ver.1）',
       role: 'フロントエンドエンジニア',
@@ -178,6 +260,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-11',
       period: '2020/5-2020/7',
       name: '某印刷会社コールセンター構築',
       role: 'エンジニア',
@@ -188,6 +271,7 @@ const ProjectSection: React.FC = () => {
       ],
     },
     {
+      id: 'project-12',
       period: '2017/5-2020/2',
       name: '某コンビニエンスストア向けWindowsネイティブアプリ開発',
       role: 'エンジニア',
@@ -335,6 +419,61 @@ const ProjectSection: React.FC = () => {
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* プロジェクトリンク */}
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-xs font-medium text-[#4A6670] dark:text-gray-200">
+                        関連リンク
+                      </h4>
+                      <AddLinkDialog
+                        projectId={project.id}
+                        projectName={project.name}
+                        onLinkAdded={(newLink) => handleLinkAdded(project.id, newLink)}
+                      />
+                    </div>
+                    
+                    {loadingLinks[project.id] && (
+                      <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                        <div className="w-3 h-3 border-2 border-gray-300 border-t-transparent rounded-full animate-spin" />
+                        読み込み中...
+                      </div>
+                    )}
+                    
+                    {projectLinks[project.id] && projectLinks[project.id].length > 0 ? (
+                      <div className="space-y-2">
+                        {projectLinks[project.id].map((link) => (
+                          <div
+                            key={link.id}
+                            className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-700/50 rounded-md group"
+                          >
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-sm text-[#4A6670] dark:text-gray-300 hover:text-[#2c4248] dark:hover:text-white transition-colors flex-1 min-w-0"
+                            >
+                              <ExternalLink className="w-3 h-3 shrink-0" />
+                              <span className="truncate">{link.title}</span>
+                            </a>
+                            <button
+                              onClick={() => handleDeleteLink(project.id, link.id)}
+                              className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-red-500 transition-all"
+                              title="リンクを削除"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      !loadingLinks[project.id] && (
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          まだリンクが追加されていません
+                        </p>
+                      )
+                    )}
                   </div>
                 </div>
               )}
