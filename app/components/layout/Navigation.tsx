@@ -58,8 +58,14 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <ul className="flex space-x-6 py-4">
+        <div className="flex justify-between items-center py-4">
+          {/* ページタイトル - 左端に配置 */}
+          <h1 className="text-lg md:text-xl font-semibold text-[#4A6670] dark:text-white">
+            Yokomachi Naoki
+          </h1>
+          
+          {/* ナビゲーションメニュー - 中央に配置 */}
+          <ul className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -76,6 +82,27 @@ const Navigation = () => {
               </li>
             ))}
           </ul>
+          
+          {/* モバイル用ナビゲーション - 最初の3つのアイテムのみ表示 */}
+          <ul className="flex md:hidden space-x-3">
+            {navItems.slice(0, 3).map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className={`text-xs transition-colors ${
+                    activeSection === item.href.replace('#', '')
+                    ? 'text-[#4A6670] dark:text-white font-medium'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          
+          {/* アクションボタン - 右端に配置 */}
           <div className="flex items-center gap-2">
             <Link
               href="https://github.com/n-yokomachi/portfolio"
