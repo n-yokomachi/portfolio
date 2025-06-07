@@ -34,42 +34,6 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           
           trigger_phrase: "@claude"
-          assignee_trigger: "claude"
-          timeout_minutes: 45
+          timeout_minutes: "60"
+          allowed_tools: "mcp__github__create_pull_request,mcp__github__update_pull_request"
           
-          # PR作成を可能にするツールを追加
-          allowed_tools: "mcp__github__create_pull_request"
-          
-          # カスタム指示（PR作成を強制）
-          custom_instructions: |
-            ## 重要な動作ルール ##
-            
-            **Issueに対するコメントの場合（最重要）:**
-            1. 必ず新しいブランチを作成してください（例: `feature/issue-${issue_number}` または `fix/issue-${issue_number}`）
-            2. 実装完了後、必ずPull Requestを作成してください
-            3. PRの説明にはCloses #${issue_number}を含めてください
-            4. ブランチ名には必ずissue番号を含めてください
-            
-            **PR内でのコメントの場合:**
-            - 既存のPRブランチで直接作業してください
-            - 新しいPRは作成しないでください
-            
-            **一般的な作業フロー:**
-            1. 作業前に現在のブランチとissue情報を確認
-            2. Issueの場合は新ブランチ作成: `git checkout -b feature/issue-${issue_number}`
-            3. 実装とテスト
-            4. コミット: 明確なコミットメッセージを使用
-            5. プッシュ: `git push -u origin feature/issue-${issue_number}`
-            6. **必須**: GitHub APIを使用してPull Requestを作成
-            7. PRの説明に実装内容とCloses #${issue_number}を記載
-            
-            **コミットメッセージ形式:**
-            - feat: 新機能追加の場合
-            - fix: バグ修正の場合
-            - docs: ドキュメント更新の場合
-            - style: コードフォーマット等
-            
-            **絶対に守ること:**
-            - Issueトリガーの場合は100%新規PRを作成する
-            - PRタイトルは分かりやすく具体的に
-            - 実装が完了したら必ずissueにコメントで報告する 
