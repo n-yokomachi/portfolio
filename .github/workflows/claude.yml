@@ -14,6 +14,7 @@ jobs:
     if: |
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +38,7 @@ jobs:
           timeout_minutes: 45
           
           # PR作成を可能にするツールを追加
-          allowed_tools: "Bash(git status),Bash(git log),Bash(git diff),Bash(git checkout),Bash(git branch),Bash(git add),Bash(git commit),Bash(git push),View,GlobTool,Edit,Replace,mcp__github__create_pull_request"
+          allowed_tools: "mcp__github__create_pull_request"
           
           # カスタム指示（PR作成を強制）
           custom_instructions: |
