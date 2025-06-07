@@ -6,6 +6,7 @@ import PositionSection from './components/layout/PositionSection';
 import CertificationSection from './components/layout/CertificationSection';
 import ProjectSection from './components/layout/ProjectSection';
 import LinkSection from './components/layout/LinkSection';
+import Footer from './components/layout/Footer';
 
 export default function Home() {
   return (
@@ -36,16 +37,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 animate-fade-in-delay-400">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-montserrat">
-            Designed & Built by{' '}
-            <span className="text-[#4A6670] dark:text-gray-300">yokomachi</span>
-            <span className="mx-2">•</span>
-            Last updated: January 2025
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
