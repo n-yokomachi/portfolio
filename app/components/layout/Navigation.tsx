@@ -58,32 +58,65 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <ul className="flex space-x-6 py-4">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className={`text-sm transition-colors ${
-                    activeSection === item.href.replace('#', '')
-                    ? 'text-[#4A6670] dark:text-white font-medium'
-                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-2">
+        <div className="flex justify-between items-center py-4">
+          {/* ページタイトル - 左端 */}
+          <div className="flex-shrink-0">
+            <h1 className="text-lg md:text-xl font-medium text-[#4A6670] dark:text-white">
+              Yokomachi Naoki
+            </h1>
+          </div>
+
+          {/* ナビゲーションリンク - 中央 */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <ul className="flex space-x-6">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleScroll(e, item.href)}
+                    className={`text-sm transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                      ? 'text-[#4A6670] dark:text-white font-medium'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* モバイル用ナビゲーション */}
+          <div className="md:hidden flex-1 flex justify-center">
+            <ul className="flex space-x-3">
+              {navItems.slice(0, 3).map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleScroll(e, item.href)}
+                    className={`text-xs transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                      ? 'text-[#4A6670] dark:text-white font-medium'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* GitHub & テーマトグル - 右端 */}
+          <div className="flex items-center gap-2 flex-shrink-0">
             <Link
               href="https://github.com/n-yokomachi/portfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 hover:text-[#4A6670] dark:hover:text-white"
             >
-              <GithubIcon className="w-5 h-5" />
+              <GithubIcon className="w-4 h-4 md:w-5 md:h-5" />
             </Link>
             <ThemeToggle />
           </div>
