@@ -6,7 +6,8 @@
       "Bash(npm show:*)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nfix: downgrade next-intl to v3 for Vercel compatibility\n\n- next-intl v4 has native binding issues on Vercel\n- Adjusted request.ts API for v3\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix: upgrade Next.js to 15.5.9 to resolve CVE-2025-66478\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
