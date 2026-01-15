@@ -8,86 +8,32 @@ on:
     types: [opened, assigned]
   pull_request_review:
     types: [submitted]
-  pull_request:
-    types: [opened, synchronize]
 
 jobs:
   claude-response:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
       pull-requests: write
       id-token: write
-      actions: write
     steps:
-      # GitHub Appトークンの生成（推奨）
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-        # GitHub Appを使用しない場合はこのステップをコメントアウト
-        
+          fetch-depth: 1
+
       - name: Run Claude Code Action
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # GitHub Appを使用する場合
-          github_token: ${{ steps.app-token.outputs.token }}
-          # GitHub Appを使用しない場合は以下を使用
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
           
           trigger_phrase: "@claude"
-          assignee_trigger: "claude"
-          timeout_minutes: 45
+          timeout_minutes: "60"
+          allowed_tools: "mcp__github__create_pull_request,mcp__github__update_pull_request"
           
-          # 使用可能なツールを明示的に指定
-          allowed_tools: |
-            Bash(git status),
-            Bash(git log),
-            Bash(git diff),
-            Bash(git checkout),
-            Bash(git branch),
-            Bash(git add),
-            Bash(git commit),
-            Bash(git push),
-            View,
-            GlobTool,
-            Edit,
-            Replace
-          
-          # カスタム指示（PR作成を強制）
-          custom_instructions: |
-            ## 重要な動作ルール ##
-            
-            **Issueに対するコメントの場合（最重要）:**
-            1. 必ず新しいブランチを作成してください（例: `feature/issue-${issue_number}` または `fix/issue-${issue_number}`）
-            2. 実装完了後、必ずPull Requestを作成してください
-            3. PRの説明にはCloses #${issue_number}を含めてください
-            4. ブランチ名には必ずissue番号を含めてください
-            
-            **PR内でのコメントの場合:**
-            - 既存のPRブランチで直接作業してください
-            - 新しいPRは作成しないでください
-            
-            **一般的な作業フロー:**
-            1. 作業前に現在のブランチとissue情報を確認
-            2. Issueの場合は新ブランチ作成: `git checkout -b feature/issue-${issue_number}`
-            3. 実装とテスト
-            4. コミット: 明確なコミットメッセージを使用
-            5. プッシュ: `git push -u origin feature/issue-${issue_number}`
-            6. **必須**: GitHub APIを使用してPull Requestを作成
-            7. PRの説明に実装内容とCloses #${issue_number}を記載
-            
-            **コミットメッセージ形式:**
-            - feat: 新機能追加の場合
-            - fix: バグ修正の場合
-            - docs: ドキュメント更新の場合
-            - style: コードフォーマット等
-            
-            **絶対に守ること:**
-            - Issueトリガーの場合は100%新規PRを作成する
-            - PRタイトルは分かりやすく具体的に
-            - 実装が完了したら必ずissueにコメントで報告する 

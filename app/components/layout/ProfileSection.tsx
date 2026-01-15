@@ -27,7 +27,7 @@ const ProfileSection = () => {
           {/* Profile Image */}
           <div className="w-48 h-48 relative rounded-full overflow-hidden flex-shrink-0 border-4 border-gray-50 dark:border-gray-800 shadow-lg">
             <Image
-              src="/icon.png"
+              src="/icon.jpg"
               alt="Profile Icon"
               fill
               className="object-cover"
