@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "title": "Yokomachi Naoki - Portfolio",
+    "description": "Software Engineer Portfolio"
+  },
+  "navigation": {
+    "profile": "Profile",
+    "skill": "Skill",
+    "position": "Position",
+    "certification": "Certification",
+    "project": "Project",
+    "link": "Link"
+  },
+  "hero": {
+    "techStackTitle": "Tech Stack",
+    "techStack": {
+      "nextjs": "Full-stack framework based on React",
+      "react": "JavaScript library for building UI components",
+      "typescript": "Type-safe superset of JavaScript",
+      "tailwind": "Utility-first CSS framework",
+      "shadcn": "Reusable UI component library"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "labels": {
+      "name": "Name",
+      "hometown": "Hometown",
+      "current": "Current Location",
+      "favoriteLanguage": "Favorite Language",
+      "favoriteAWS": "Favorite AWS",
+      "editor": "Editor",
+      "favoriteLLM": "Favorite LLM"
+    },
+    "values": {
+      "name": "Naoki Yokomachi (yoko)",
+      "hometown": "Hachinohe, Aomori, Japan",
+      "current": "Tokyo, Japan",
+      "favoriteLanguage": "TypeScript, C#",
+      "favoriteAWS": "AWS Lambda, Amazon Bedrock",
+      "editor": "VSCode",
+      "favoriteLLM": "Anthropic Claude Opus 4.5"
+    }
+  },
+  "skill": {
+    "title": "Skill",
+    "levels": {
+      "expert": "Frequently Used",
+      "intermediate": "Work Experience",
+      "beginner": "Basic Knowledge"
+    },
+    "subcategories": {
+      "versionControl": "Version Control",
+      "sourceControl": "Source Control & Collaboration",
+      "cicd": "CI/CD",
+      "iac": "IaC",
+      "communication": "Communication",
+      "editor": "Editor",
+      "design": "Design",
+      "container": "Container"
+    }
+  },
+  "position": {
+    "title": "Position",
+    "positions": [
+      {
+        "period": "2025 ~ Present",
+        "title": "Engineer",
+        "description": [
+          "Full-Stack Engineer",
+          "• Responsible for frontend, backend, and infrastructure",
+          "• Practicing AI-driven development",
+          "AI Evangelist",
+          "• Promoting AI-driven development within the company",
+          "• Public speaking and blog writing activities"
+        ]
+      },
+      {
+        "period": "2023 ~ 2024",
+        "title": "Lead Engineer",
+        "description": [
+          "Engineering Management",
+          "• People management (project assignment, career consultation, etc.)",
+          "• Project management (cost estimation, PoC, task management, etc.)",
+          "• Product management (Sylphina specification, development oversight)",
+          "• Technology management (technical dissemination activities)",
+          "Ongoing Work",
+          "• AWS infrastructure building",
+          "• Web application development",
+          "• Sylphina product development"
+        ]
+      },
+      {
+        "period": "2020 ~ 2022",
+        "title": "Full-Stack Engineer",
+        "description": [
+          "AWS Implementation & Migration",
+          "• Design, build, and maintenance of AWS infrastructure for contact centers",
+          "• End-to-end responsibility from estimation to acceptance",
+          "• Concurrent maintenance for multiple clients",
+          "Web Application Development",
+          "• Web frontend development for contact centers",
+          "• Prototype frontend implementation for in-house product \"Sylphina\"",
+          "• API backend construction on AWS"
+        ]
+      },
+      {
+        "period": "2018 ~ 2019",
+        "title": "Engineer",
+        "description": [
+          "Windows Application Development",
+          "• Design and development of Windows native apps for retail stores",
+          "• Design and development of business terminal applications as SES contractor",
+          "• Screen and report design for inventory management, DB operations and external API access logic development"
+        ]
+      },
+      {
+        "period": "2017",
+        "title": "Tester",
+        "description": []
+      }
+    ]
+  },
+  "certification": {
+    "title": "Certification",
+    "awsTitle": "AWS Certification",
+    "otherTitle": "Other Certification",
+    "apliedInfoTech": "Applied Information Technology Engineer Examination"
+  },
+  "project": {
+    "title": "Project",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "phases": "Phases",
+    "techStack": "Tech Stack",
+    "phaseNames": {
+      "design": "Design",
+      "build": "Build",
+      "maintenance": "Maintenance",
+      "requirements": "Requirements",
+      "development": "Development",
+      "testing": "Testing"
+    },
+    "categories": {
+      "infrastructure": "Infrastructure",
+      "languageFw": "Language/FW",
+      "crm": "CRM",
+      "os": "OS",
+      "db": "DB",
+      "product": "Product"
+    },
+    "projects": [
+      {
+        "period": "2024/1-2024/4",
+        "name": "Securities Company Contact Center IVR Renewal",
+        "role": "PM/Tech Lead",
+        "phases": ["Design", "Build", "Maintenance"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Lambda"] },
+          { "category": "Language/FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2022/10-2023/4",
+        "name": "Beverage Company Call Center IVR Renewal",
+        "role": "PM/Tech Lead",
+        "phases": ["Requirements", "Design", "Build", "Maintenance"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Lambda", "DynamoDB", "ECS", "Fargate"] },
+          { "category": "Language/FW", "items": ["JavaScript", "Python"] }
+        ]
+      },
+      {
+        "period": "2022/10-2023/4",
+        "name": "Regional Bank Call Center Construction",
+        "role": "Tech Lead",
+        "phases": ["Requirements", "Design", "Build", "Development"],
+        "techStacks": [
+          { "category": "Product", "items": ["Sylphina Customization Development"] }
+        ]
+      },
+      {
+        "period": "2022/5-2025/4",
+        "name": "Call Center Browser Phone Service \"Sylphina\" (Ver.2)",
+        "role": "PM/Tech Lead",
+        "phases": ["Requirements", "Design", "Build"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Amplify", "Lambda", "DynamoDB", "API Gateway", "AppSync", "Cognito", "S3", "Athena", "Glue", "CDK"] },
+          { "category": "Language/FW", "items": ["HTML", "CSS", "TypeScript", "JavaScript", "GraphQL", "React"] }
+        ]
+      },
+      {
+        "period": "2022/1-2023/10",
+        "name": "Telemarketing Infrastructure Maintenance",
+        "role": "Engineer",
+        "phases": ["Maintenance"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["EC2", "RDS", "VPC"] },
+          { "category": "OS", "items": ["Linux"] }
+        ]
+      },
+      {
+        "period": "2022/2-2023/10",
+        "name": "Regional Bank Call Center Construction",
+        "role": "Tech Lead",
+        "phases": ["Requirements", "Design", "Build", "Development"],
+        "techStacks": [
+          { "category": "Product", "items": ["Sylphina Customization Development"] }
+        ]
+      },
+      {
+        "period": "2021/5-2025/4",
+        "name": "Beverage Company Call Center Construction & Maintenance",
+        "role": "Engineer",
+        "phases": ["Design", "Build", "Maintenance"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Lambda", "DynamoDB", "S3"] },
+          { "category": "Language/FW", "items": ["JavaScript", "Python"] }
+        ]
+      },
+      {
+        "period": "2021/4-2021/9",
+        "name": "Amazon Connect Chat Integration for Salon Management System",
+        "role": "PM/Tech Lead",
+        "phases": ["Requirements", "Design", "Build", "Development", "Testing"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Lambda", "Cloudfront", "S3", "API Gateway"] },
+          { "category": "CRM", "items": ["Zendesk"] }
+        ]
+      },
+      {
+        "period": "2021/1-2022/2",
+        "name": "MVNO New Service AWS Backend Development",
+        "role": "Tech Lead",
+        "phases": ["Design", "Build", "Development", "Testing"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Lambda"] },
+          { "category": "Language/FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2020/8-2022/4",
+        "name": "Call Center Browser Phone Service \"Sylphina\" (Ver.1)",
+        "role": "Frontend Engineer",
+        "phases": ["Design", "Build", "Development", "Testing"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Amplify", "Lambda", "DynamoDB", "API Gateway", "AppSync", "Cognito", "S3"] },
+          { "category": "Language/FW", "items": ["HTML", "CSS", "JavaScript", "GraphQL", "React"] }
+        ]
+      },
+      {
+        "period": "2020/5-2020/7",
+        "name": "Printing Company Call Center Construction",
+        "role": "Engineer",
+        "phases": ["Design", "Build", "Maintenance", "Testing"],
+        "techStacks": [
+          { "category": "Infrastructure", "items": ["Amazon Connect", "Lambda"] },
+          { "category": "Language/FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2017/5-2020/2",
+        "name": "Convenience Store Windows Native App Development",
+        "role": "Engineer",
+        "phases": ["Design", "Development", "Testing"],
+        "techStacks": [
+          { "category": "OS", "items": ["Windows Server 2012"] },
+          { "category": "Language/FW", "items": ["C#", ".NET Framework"] },
+          { "category": "DB", "items": ["Oracle DB"] }
+        ]
+      }
+    ]
+  },
+  "link": {
+    "title": "Link / Contact",
+    "booklog": "Booklog"
+  },
+  "footer": {
+    "designedBy": "Designed & Built by",
+    "lastUpdated": "Last updated: January 2025"
+  }
+}

@@ -1,3 +1,7 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
 interface Position {
   period: string;
   title: string;
@@ -41,63 +45,21 @@ const TimelineMarker = () => (
 );
 
 const PositionSection = () => {
-  const positions: Position[] = [
-    {
-      period: '2023年 ~ 2024年',
-      title: 'リードエンジニア',
-      description: [
-        'エンジニアリングマネジメント',
-        '• ピープルマネジメント（案件アサイン調整、キャリア面談等）',
-        '• プロジェクトマネジメント（工数見積もり、PoC、タスク管理等）',
-        '• プロダクトマネジメント（Sylphina の仕様策定、開発統括）',
-        '• テクノロジーマネジメント（技術周知活動）',
-        '継続業務',
-        '• AWS構築',
-        '• Webアプリケーション開発',
-        '• Sylphina プロダクト開発',
-      ],
-    },
-    {
-      period: '2020年 ~ 2022年',
-      title: 'フルスタックエンジニア',
-      description: [
-        'AWS導入・移行',
-        '• コンタクトセンター向けAWSインフラの設計、構築、保守',
-        '• 見積もりから検収まで一貫して担当',
-        '• 複数社の保守を並行して担当',
-        'Webアプリケーション開発',
-        '• コンタクトセンター向けWebフロントエンド開発',
-        '• 自社プロダクト「Sylphina」のプロトタイプフロントエンド実装',
-        '• AWS上でのAPIバックエンド構築',
-      ],
-    },
-    {
-      period: '2018年 ~ 2019年',
-      title: 'エンジニア',
-      description: [
-        'Windowsアプリケーション開発',
-        '• 小売店舗向けWindowsネイティブアプリの設計、開発',
-        '• SESとして出向し、業務用端末アプリケーションの設計、開発',
-        '• 在庫管理関連の画面・帳票設計、DB操作・外部APIアクセスのロジック開発',
-      ],
-    },
-    {
-      period: '2017年',
-      title: 'テスター',
-      description: [],
-    },
-  ];
+  const t = useTranslations('position');
+
+  const positions: Position[] = t.raw('positions');
+  const testerTitle = positions[positions.length - 1]?.title;
 
   return (
     <section id="position" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-light text-center mb-8 md:mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
-          Position
+          {t('title')}
         </h2>
 
-        {/* PC表示用のタイムライン */}
+        {/* PC Timeline */}
         <div className="relative hidden md:block">
-          {/* タイムライン中央線 */}
+          {/* Timeline center line */}
           <div className="absolute left-1/2 -translate-x-[0.5px] top-0 bottom-0 w-px bg-gradient-to-b from-[#4A6670]/0 via-[#4A6670]/20 to-[#4A6670]/0 dark:from-gray-200/0 dark:via-gray-200/20 dark:to-gray-200/0" />
 
           {positions.map((position, index) => (
@@ -105,9 +67,9 @@ const PositionSection = () => {
               key={index}
               className={`relative flex items-center ${
                 index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-              } ${index === 0 ? '' : position.title === 'テスター' ? 'mt-8' : '-mt-[120px]'}`}
+              } ${index === 0 ? '' : position.title === testerTitle ? 'mt-8' : '-mt-[120px]'}`}
             >
-              {/* 期間マーカー */}
+              {/* Period marker */}
               <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
                 <TimelineMarker />
                 <div className="px-4 py-1.5 bg-[#4A6670]/10 dark:bg-gray-200/10 backdrop-blur-sm rounded-full">
@@ -117,26 +79,26 @@ const PositionSection = () => {
                 </div>
               </div>
 
-              {/* コンテンツボックス */}
+              {/* Content box */}
               <div
                 className={`w-[47%] group ${
                   index % 2 === 0 ? 'pr-24' : 'pl-24'
                 }`}
               >
                 <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
-                  {/* 役職 */}
+                  {/* Position title */}
                   <h3 className="text-lg font-medium text-[#4A6670] dark:text-gray-200 mb-4">
                     {position.title}
                   </h3>
-                  
-                  {/* 職務内容 */}
+
+                  {/* Job description */}
                   <div className="space-y-2.5">
                     {position.description.map((desc, descIndex) => (
                       <p
                         key={descIndex}
                         className={`${
-                          desc.startsWith('•') 
-                            ? 'pl-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed' 
+                          desc.startsWith('•')
+                            ? 'pl-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed'
                             : 'text-base font-medium text-[#4A6670] dark:text-gray-200 mt-3 first:mt-0'
                         }`}
                       >
@@ -150,7 +112,7 @@ const PositionSection = () => {
           ))}
         </div>
 
-        {/* モバイル表示用のリスト */}
+        {/* Mobile list */}
         <div className="md:hidden space-y-6">
           {positions.map((position, index) => (
             <div
@@ -167,14 +129,14 @@ const PositionSection = () => {
                   {position.title}
                 </h3>
               </div>
-              
+
               <div className="space-y-2">
                 {position.description.map((desc, descIndex) => (
                   <p
                     key={descIndex}
                     className={`${
-                      desc.startsWith('•') 
-                        ? 'pl-3 text-xs text-gray-600 dark:text-gray-300 leading-relaxed' 
+                      desc.startsWith('•')
+                        ? 'pl-3 text-xs text-gray-600 dark:text-gray-300 leading-relaxed'
                         : 'text-sm font-medium text-[#4A6670] dark:text-gray-200 mt-2 first:mt-0'
                     }`}
                   >
@@ -190,4 +152,4 @@ const PositionSection = () => {
   );
 };
 
-export default PositionSection; 
+export default PositionSection;

@@ -13,6 +13,7 @@ import {
   Languages,
   BookOpen
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const XIcon = () => (
   <svg
@@ -28,9 +29,12 @@ interface ExternalLink {
   name: string;
   url: string;
   icon: React.ReactNode;
+  translationKey?: string;
 }
 
 const LinkSection: React.FC = () => {
+  const t = useTranslations('link');
+
   const links: ExternalLink[] = [
     {
       name: 'X (Twitter)',
@@ -95,9 +99,10 @@ const LinkSection: React.FC = () => {
       icon: <Languages className="w-6 h-6" />,
     },
     {
-      name: 'ブクログ',
+      name: 'booklog',
       url: 'https://booklog.jp/users/yokomachi1',
       icon: <BookOpen className="w-6 h-6" />,
+      translationKey: 'booklog',
     },
   ];
 
@@ -105,7 +110,7 @@ const LinkSection: React.FC = () => {
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
-          Link / Contact
+          {t('title')}
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
@@ -121,7 +126,7 @@ const LinkSection: React.FC = () => {
                 {link.icon}
               </div>
               <span className="text-sm text-gray-600 dark:text-gray-300 group-hover:text-[#4A6670] dark:group-hover:text-white transition-colors">
-                {link.name}
+                {link.translationKey ? t(link.translationKey) : link.name}
               </span>
             </Link>
           ))}
@@ -131,4 +136,4 @@ const LinkSection: React.FC = () => {
   );
 };
 
-export default LinkSection; 
+export default LinkSection;

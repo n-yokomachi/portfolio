@@ -4,17 +4,19 @@ import Image from 'next/image';
 import { useTheme } from '../providers/ThemeProvider';
 import * as Popover from '@radix-ui/react-popover';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const HeroSection = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('hero');
 
   const techStack = [
-    { name: 'Next.js', description: 'Reactベースのフルスタックフレームワーク' },
-    { name: 'React', description: 'UIコンポーネントを構築するためのJavaScriptライブラリ' },
-    { name: 'TypeScript', description: '型安全なJavaScriptの上位互換言語' },
-    { name: 'Tailwind CSS', description: 'ユーティリティファーストのCSSフレームワーク' },
-    { name: 'shadcn/ui', description: '再利用可能なUIコンポーネントライブラリ' },
+    { name: 'Next.js', descKey: 'nextjs' },
+    { name: 'React', descKey: 'react' },
+    { name: 'TypeScript', descKey: 'typescript' },
+    { name: 'Tailwind CSS', descKey: 'tailwind' },
+    { name: 'shadcn/ui', descKey: 'shadcn' },
   ];
 
   return (
@@ -46,7 +48,7 @@ const HeroSection = () => {
           >
             <div className="relative bg-white dark:bg-gray-800 p-6 rounded-lg">
               <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                使用技術スタック
+                {t('techStackTitle')}
               </h2>
               <div className="space-y-4">
                 {techStack.map((tech, index) => (
@@ -56,7 +58,7 @@ const HeroSection = () => {
                     style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                   >
                     <h3 className="font-semibold text-gray-800 dark:text-gray-200">{tech.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{tech.description}</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">{t(`techStack.${tech.descKey}`)}</p>
                   </div>
                 ))}
               </div>

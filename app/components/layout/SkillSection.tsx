@@ -1,4 +1,7 @@
+'use client';
+
 import SkillButton from '../ui/SkillButton';
+import { useTranslations } from 'next-intl';
 
 type SkillLevel = 'expert' | 'intermediate' | 'beginner';
 
@@ -8,7 +11,7 @@ interface Skill {
 }
 
 interface SubCategory {
-  title: string;
+  titleKey: string;
   skills: Skill[];
 }
 
@@ -27,6 +30,8 @@ interface ComplexCategory extends BaseCategory {
 type Category = SimpleCategory | ComplexCategory;
 
 const SkillSection = () => {
+  const t = useTranslations('skill');
+
   const mainCategories: Category[] = [
     {
       title: 'OS',
@@ -48,6 +53,32 @@ const SkillSection = () => {
         { name: 'Python', level: 'expert' },
         { name: 'C#', level: 'beginner' },
         { name: 'PHP', level: 'beginner' },
+      ],
+    },
+    {
+      title: 'AI FrameWork/Building Blocks',
+      skills: [
+        { name: 'LangGraph', level: 'beginner' },
+        { name: 'Mastra', level: 'intermediate' },
+        { name: 'Strands Agents', level: 'intermediate' },
+        { name: 'Amazon Bedrock', level: 'intermediate' },
+        { name: 'Bedrock AgentCore', level: 'intermediate' },
+      ],
+    },
+    {
+      title: 'AI Tools',
+      skills: [
+        { name: 'Claude Code', level: 'intermediate' },
+        { name: 'Codex', level: 'beginner' },
+        { name: 'Gemini CLI', level: 'beginner' },
+        { name: 'GitHub Copilot', level: 'intermediate' },
+        { name: 'Kiro', level: 'intermediate' },
+        { name: 'Antigravity', level: 'beginner' },
+        { name: 'Cursor', level: 'intermediate' },
+        { name: 'Windsurf', level: 'intermediate' },
+        { name: 'v0', level: 'beginner' },
+        { name: 'Lovable', level: 'beginner' },
+        { name: 'MCPs', level: 'intermediate' },
       ],
     },
     {
@@ -104,35 +135,35 @@ const SkillSection = () => {
     title: 'DevOps',
     subCategories: [
       {
-        title: 'バージョン管理',
+        titleKey: 'versionControl',
         skills: [
           { name: 'Git', level: 'expert' },
           { name: 'Subversion', level: 'beginner' },
         ],
       },
       {
-        title: 'ソース管理・コラボレーション',
+        titleKey: 'sourceControl',
         skills: [
           { name: 'GitHub', level: 'expert' },
           { name: 'GitLab', level: 'beginner' },
         ],
       },
       {
-        title: 'CI/CD',
+        titleKey: 'cicd',
         skills: [
           { name: 'AWS Amplify', level: 'expert' },
           { name: 'GitHub Actions', level: 'intermediate' },
         ],
       },
       {
-        title: 'IaC',
+        titleKey: 'iac',
         skills: [
           { name: 'AWS CDK', level: 'expert' },
           { name: 'AWS CloudFormation', level: 'intermediate' },
         ],
       },
       {
-        title: 'コミュニケーション',
+        titleKey: 'communication',
         skills: [
           { name: 'Slack', level: 'expert' },
           { name: 'Microsoft Teams', level: 'intermediate' },
@@ -140,7 +171,7 @@ const SkillSection = () => {
         ],
       },
       {
-        title: 'エディタ',
+        titleKey: 'editor',
         skills: [
           { name: 'VSCode', level: 'expert' },
           { name: 'Cursor', level: 'expert' },
@@ -148,7 +179,7 @@ const SkillSection = () => {
         ],
       },
       {
-        title: 'デザイン',
+        titleKey: 'design',
         skills: [
           { name: 'Figma', level: 'intermediate' },
           { name: 'Canva', level: 'intermediate' },
@@ -156,7 +187,7 @@ const SkillSection = () => {
         ],
       },
       {
-        title: 'コンテナ',
+        titleKey: 'container',
         skills: [
           { name: 'Docker', level: 'intermediate' },
           { name: 'AWS ECS (Fargate)', level: 'intermediate' },
@@ -176,7 +207,7 @@ const SkillSection = () => {
           {category.subCategories.map((subCategory, subIndex) => (
             <div key={subIndex}>
               <h4 className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-2 flex items-center">
-                <span className="whitespace-nowrap">{subCategory.title}</span>
+                <span className="whitespace-nowrap">{t(`subcategories.${subCategory.titleKey}`)}</span>
                 <div className="h-px flex-grow bg-gray-100 dark:bg-gray-700 ml-2"></div>
               </h4>
               <div className="flex flex-wrap gap-1.5">
@@ -209,21 +240,21 @@ const SkillSection = () => {
     <section id="skill" className="py-16 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-light text-center mb-16 font-montserrat tracking-wider text-[#4A6670] dark:text-gray-200">
-          Skill
+          {t('title')}
         </h2>
         <div className="flex justify-center mb-8">
           <div className="flex flex-wrap gap-4 text-xs">
             <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FFE4E4] to-[#FFD7D7] dark:from-[#4A2F2F] dark:to-[#5A3F3F] ring-2 ring-[#FFD7D7] dark:ring-[#5A3F3F] ring-opacity-30"></div>
-              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">頻繁に使用</span>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">{t('levels.expert')}</span>
             </div>
             <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#E4F5F3] to-[#B8E6E1] dark:from-[#2F4A47] dark:to-[#3F5A57] ring-2 ring-[#B8E6E1] dark:ring-[#3F5A57] ring-opacity-30"></div>
-              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">実務経験あり</span>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">{t('levels.intermediate')}</span>
             </div>
             <div className="flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#F8F9FA] to-[#E9ECEF] dark:from-gray-800 dark:to-gray-700 ring-2 ring-gray-300 dark:ring-gray-600 ring-opacity-30"></div>
-              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">基本的な知識</span>
+              <span className="text-gray-600 dark:text-gray-300 whitespace-nowrap">{t('levels.beginner')}</span>
             </div>
           </div>
         </div>

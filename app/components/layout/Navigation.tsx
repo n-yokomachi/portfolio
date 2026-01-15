@@ -4,17 +4,20 @@ import Link from 'next/link';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { useEffect, useState } from 'react';
 import { GithubIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState<string>('');
+  const t = useTranslations('navigation');
 
   const navItems = [
-    { label: 'Profile', href: '#profile' },
-    { label: 'Skill', href: '#skill' },
-    { label: 'Position', href: '#position' },
-    { label: 'Certification', href: '#certification' },
-    { label: 'Project', href: '#project' },
-    { label: 'Link', href: '#contact' },
+    { label: t('profile'), href: '#profile' },
+    { label: t('skill'), href: '#skill' },
+    { label: t('position'), href: '#position' },
+    { label: t('certification'), href: '#certification' },
+    { label: t('project'), href: '#project' },
+    { label: t('link'), href: '#contact' },
   ];
 
   useEffect(() => {
@@ -38,12 +41,13 @@ const Navigation = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // 初期表示時にも実行
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
@@ -64,7 +68,7 @@ const Navigation = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
+                  onClick={(e) => handleScrollClick(e, item.href)}
                   className={`text-sm transition-colors ${
                     activeSection === item.href.replace('#', '')
                     ? 'text-[#4A6670] dark:text-white font-medium'
@@ -77,6 +81,7 @@ const Navigation = () => {
             ))}
           </ul>
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <Link
               href="https://github.com/n-yokomachi/portfolio"
               target="_blank"
@@ -93,4 +98,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;

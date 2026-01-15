@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "title": "Yokomachi Naoki - Portfolio",
+    "description": "Software Engineer Portfolio"
+  },
+  "navigation": {
+    "profile": "Profile",
+    "skill": "Skill",
+    "position": "Position",
+    "certification": "Certification",
+    "project": "Project",
+    "link": "Link"
+  },
+  "hero": {
+    "techStackTitle": "使用技術スタック",
+    "techStack": {
+      "nextjs": "Reactベースのフルスタックフレームワーク",
+      "react": "UIコンポーネントを構築するためのJavaScriptライブラリ",
+      "typescript": "型安全なJavaScriptの上位互換言語",
+      "tailwind": "ユーティリティファーストのCSSフレームワーク",
+      "shadcn": "再利用可能なUIコンポーネントライブラリ"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "labels": {
+      "name": "名前",
+      "hometown": "出身",
+      "current": "現在",
+      "favoriteLanguage": "好きな言語",
+      "favoriteAWS": "好きなAWS",
+      "editor": "使うエディタ",
+      "favoriteLLM": "好きなLLM"
+    },
+    "values": {
+      "name": "Naoki Yokomachi（yoko）",
+      "hometown": "青森県八戸市",
+      "current": "東京",
+      "favoriteLanguage": "TypeScript, C#",
+      "favoriteAWS": "AWS Lambda, Amazon Bedrock",
+      "editor": "VSCode",
+      "favoriteLLM": "Anthropic Claude Opus 4.5"
+    }
+  },
+  "skill": {
+    "title": "Skill",
+    "levels": {
+      "expert": "頻繁に使用",
+      "intermediate": "実務経験あり",
+      "beginner": "基本的な知識"
+    },
+    "subcategories": {
+      "versionControl": "バージョン管理",
+      "sourceControl": "ソース管理・コラボレーション",
+      "cicd": "CI/CD",
+      "iac": "IaC",
+      "communication": "コミュニケーション",
+      "editor": "エディタ",
+      "design": "デザイン",
+      "container": "コンテナ"
+    }
+  },
+  "position": {
+    "title": "Position",
+    "positions": [
+      {
+        "period": "2025年 ~ ",
+        "title": "エンジニア",
+        "description": [
+          "フルスタックエンジニア",
+          "• フロントエンドからバックエンド、インフラまで担当",
+          "• AI駆動開発の実践",
+          "AIエバンジェリスト",
+          "• 社内AI駆動開発推進",
+          "• 社内外の登壇・ブログ執筆活動"
+        ]
+      },
+      {
+        "period": "2023年 ~ 2024年",
+        "title": "リードエンジニア",
+        "description": [
+          "エンジニアリングマネジメント",
+          "• ピープルマネジメント（案件アサイン調整、キャリア面談等）",
+          "• プロジェクトマネジメント（工数見積もり、PoC、タスク管理等）",
+          "• プロダクトマネジメント（Sylphina の仕様策定、開発統括）",
+          "• テクノロジーマネジメント（技術周知活動）",
+          "継続業務",
+          "• AWS構築",
+          "• Webアプリケーション開発",
+          "• Sylphina プロダクト開発"
+        ]
+      },
+      {
+        "period": "2020年 ~ 2022年",
+        "title": "フルスタックエンジニア",
+        "description": [
+          "AWS導入・移行",
+          "• コンタクトセンター向けAWSインフラの設計、構築、保守",
+          "• 見積もりから検収まで一貫して担当",
+          "• 複数社の保守を並行して担当",
+          "Webアプリケーション開発",
+          "• コンタクトセンター向けWebフロントエンド開発",
+          "• 自社プロダクト「Sylphina」のプロトタイプフロントエンド実装",
+          "• AWS上でのAPIバックエンド構築"
+        ]
+      },
+      {
+        "period": "2018年 ~ 2019年",
+        "title": "エンジニア",
+        "description": [
+          "Windowsアプリケーション開発",
+          "• 小売店舗向けWindowsネイティブアプリの設計、開発",
+          "• SESとして出向し、業務用端末アプリケーションの設計、開発",
+          "• 在庫管理関連の画面・帳票設計、DB操作・外部APIアクセスのロジック開発"
+        ]
+      },
+      {
+        "period": "2017年",
+        "title": "テスター",
+        "description": []
+      }
+    ]
+  },
+  "certification": {
+    "title": "Certification",
+    "awsTitle": "AWS Certification",
+    "otherTitle": "Other Certification",
+    "apliedInfoTech": "応用情報技術者試験"
+  },
+  "project": {
+    "title": "Project",
+    "expandAll": "全て開く",
+    "collapseAll": "全て閉じる",
+    "phases": "担当工程",
+    "techStack": "技術スタック",
+    "phaseNames": {
+      "design": "設計",
+      "build": "構築",
+      "maintenance": "保守",
+      "requirements": "要件定義",
+      "development": "開発",
+      "testing": "テスト"
+    },
+    "categories": {
+      "infrastructure": "インフラ",
+      "languageFw": "言語・FW",
+      "crm": "CRM",
+      "os": "OS",
+      "db": "DB",
+      "product": "プロダクト"
+    },
+    "projects": [
+      {
+        "period": "2024/1-2024/4",
+        "name": "証券会社コンタクトセンターIVR 更改",
+        "role": "PM/テックリード",
+        "phases": ["設計", "構築", "保守"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Lambda"] },
+          { "category": "言語・FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2022/10-2023/4",
+        "name": "某飲料会社コールセンターIVR更改",
+        "role": "PM/テックリード",
+        "phases": ["要件定義", "設計", "構築", "保守"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Lambda", "DynamoDB", "ECS", "Fargate"] },
+          { "category": "言語・FW", "items": ["JavaScript", "Python"] }
+        ]
+      },
+      {
+        "period": "2022/10-2023/4",
+        "name": "某地方銀行コールセンター構築",
+        "role": "テックリード",
+        "phases": ["要件定義", "設計", "構築", "開発"],
+        "techStacks": [
+          { "category": "プロダクト", "items": ["Sylphinaカスタマイズ開発"] }
+        ]
+      },
+      {
+        "period": "2022/5-2025/4",
+        "name": "コールセンターブラウザフォンサービス「Sylphina」（Ver.2）",
+        "role": "PM/テックリード",
+        "phases": ["要件定義", "設計", "構築"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Amplify", "Lambda", "DynamoDB", "API Gateway", "AppSync", "Cognito", "S3", "Athena", "Glue", "CDK"] },
+          { "category": "言語・FW", "items": ["HTML", "CSS", "TypeScript", "JavaScript", "GraphQL", "React"] }
+        ]
+      },
+      {
+        "period": "2022/1-2023/10",
+        "name": "某テレマーケティング基盤インフラ保守",
+        "role": "エンジニア",
+        "phases": ["保守"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["EC2", "RDS", "VPC"] },
+          { "category": "OS", "items": ["Linux"] }
+        ]
+      },
+      {
+        "period": "2022/2-2023/10",
+        "name": "某地方銀行コールセンター構築",
+        "role": "テックリード",
+        "phases": ["要件定義", "設計", "構築", "開発"],
+        "techStacks": [
+          { "category": "プロダクト", "items": ["Sylphinaカスタマイズ開発"] }
+        ]
+      },
+      {
+        "period": "2021/5-2025/4",
+        "name": "某飲料会社コールセンター構築・保守",
+        "role": "エンジニア",
+        "phases": ["設計", "構築", "保守"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Lambda", "DynamoDB", "S3"] },
+          { "category": "言語・FW", "items": ["JavaScript", "Python"] }
+        ]
+      },
+      {
+        "period": "2021/4-2021/9",
+        "name": "某サロン管理システム向けAmazon Connectチャット導入",
+        "role": "PM/テックリード",
+        "phases": ["要件定義", "設計", "構築", "開発", "テスト"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Lambda", "Cloudfront", "S3", "API Gateway"] },
+          { "category": "CRM", "items": ["Zendesk"] }
+        ]
+      },
+      {
+        "period": "2021/1-2022/2",
+        "name": "某MVMO新規サービスAWSバックエンド開発",
+        "role": "テックリード",
+        "phases": ["設計", "構築", "開発", "テスト"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Lambda"] },
+          { "category": "言語・FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2020/8-2022/4",
+        "name": "コールセンターブラウザフォンサービス「Sylphina」（Ver.1）",
+        "role": "フロントエンドエンジニア",
+        "phases": ["設計", "構築", "開発", "テスト"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Amplify", "Lambda", "DynamoDB", "API Gateway", "AppSync", "Cognito", "S3"] },
+          { "category": "言語・FW", "items": ["HTML", "CSS", "JavaScript", "GraphQL", "React"] }
+        ]
+      },
+      {
+        "period": "2020/5-2020/7",
+        "name": "某印刷会社コールセンター構築",
+        "role": "エンジニア",
+        "phases": ["設計", "構築", "保守", "テスト"],
+        "techStacks": [
+          { "category": "インフラ", "items": ["Amazon Connect", "Lambda"] },
+          { "category": "言語・FW", "items": ["JavaScript"] }
+        ]
+      },
+      {
+        "period": "2017/5-2020/2",
+        "name": "某コンビニエンスストア向けWindowsネイティブアプリ開発",
+        "role": "エンジニア",
+        "phases": ["設計", "開発", "テスト"],
+        "techStacks": [
+          { "category": "OS", "items": ["Windows Server 2012"] },
+          { "category": "言語・FW", "items": ["C#", ".NET Framework"] },
+          { "category": "DB", "items": ["Oracle DB"] }
+        ]
+      }
+    ]
+  },
+  "link": {
+    "title": "Link / Contact",
+    "booklog": "ブクログ"
+  },
+  "footer": {
+    "designedBy": "Designed & Built by",
+    "lastUpdated": "Last updated: January 2025"
+  }
+}
