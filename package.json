@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "optionalDependencies": {
+    "@parcel/watcher-linux-x64-glibc": "^2.5.1"
+  },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-popover": "^1.1.6",
